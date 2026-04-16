@@ -5,6 +5,7 @@
   "documentation": "https://github.com/GoodGosha/Voxnet",
   "requirements": ["aiohttp", "beautifulsoup4"],
   "config_flow": true,
+  "import_executor": true,
   "iot_class": "cloud_polling",
   "codeowners": []
 }

@@ -1,7 +1,6 @@
-﻿import re
+import re
 
 from homeassistant.components.sensor import SensorEntity
-from homeassistant.const import CURRENCY_RUB
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
@@ -17,7 +16,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 class VoxnetBalanceSensor(CoordinatorEntity, SensorEntity):
     _attr_has_entity_name = True
     _attr_name = "Баланс интернета"
-    _attr_native_unit_of_measurement = CURRENCY_RUB
+    _attr_native_unit_of_measurement = "₽"
     _attr_suggested_display_precision = 2
 
     def __init__(self, coordinator, entry_id: str):
@@ -28,7 +27,7 @@ class VoxnetBalanceSensor(CoordinatorEntity, SensorEntity):
         if not self.coordinator.data:
             return None
 
-        raw = self.coordinator.data.get("Баланс") or self.coordinator.data.get("Р‘Р°Р»Р°РЅСЃ")
+        raw = self.coordinator.data.get("Баланс") or self.coordinator.data.get("Баланс")
         if not raw:
             return None
 
